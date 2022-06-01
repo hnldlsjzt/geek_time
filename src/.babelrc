@@ -2,7 +2,7 @@
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react",
-      "@babel/preset-typescript"
+      "@babel/preset-typescript" // 这点是关键，不然解析不了 ts
     ],
     "plugins": [
      
