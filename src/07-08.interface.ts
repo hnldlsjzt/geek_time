@@ -62,3 +62,51 @@ const names: Names = {
     "2": "2",
     a: ''
 }
+
+// =================
+/**
+ * @name 使用接口来实现函数的定义
+ * @description 通常有 4 中方式来定义函数
+ * */
+
+// 4.直接使用h函数定义 
+function add4(x: number, y: number) {
+    return x + y
+}
+// 后面这 3 种，仅仅是函数的定义
+// 1.直接使用变量 -- 函数表达式
+let add: (x: number, y: number) => number = (x, y) => {
+    return x + y
+}
+console.log('add(1, 2): ', add(1, 2));
+
+
+// 2. 使用 interface 定义函数
+
+interface Add {
+    (x: number, y: number): number
+}
+const add1: Add = (x, y) => {
+    return x + y
+}
+console.log('add1: ', add1(1, 2));
+
+// 3.通过 type 来定义函数
+type add2 = (x: number, y: number) => number
+const add2: add2 = (x: number, y: number) => x + y
+console.log('add2: ', add2(1, 2));
+
+// 混合接口 -- 一个声明既有函数，又有属性,通常在第三方的类库中存在
+interface Lib {
+    (): void,
+    version: '1.0',
+    doSomething: () => void
+}
+function getLib() {
+    const lib: Lib = () => { }
+    lib.version = '1.0'
+    lib.doSomething = () => { }
+    return lib
+}
+const lib1 = getLib()
+console.log('lib1: ', lib1(), lib1?.version);
