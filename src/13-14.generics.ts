@@ -60,7 +60,8 @@ log1.run(1)
 const log2 = new LogClass();
 log2.run({ a: 1 })
 
-// 泛型约束，使用 extends,让传入的泛型必需具有特定属性
+// 泛型约束，
+// 使用 extends,让传入的泛型必需具有特定属性
 interface Length {
     length: number
 }
@@ -76,4 +77,32 @@ logAdvance('1')
 logAdvance([])
 logAdvance({ length: 1 })
 
+/**
+ * @name关键字
+ * keyof
+ */
+
+// keyof 
+
+{
+    interface Iperson {
+        name: string
+        age: number
+        id: string
+    }
+    type keys = keyof Iperson
+    const key: keys = 'age'
+    // 如果是 keyof any 的情况呢？目前作为 key 值的有：string、number、symbol
+    type anykeys = keyof any
+    const anykey: anykeys = 1 //  string | number | symbol
+
+}
+// 我们希望实现一个函数。该函数希望接受两个参数，第一个参数为一个对象object，第二个参数为该对象的 key 。
+// 函数内部通过传入的 object 以及对应的 key 返回 object[key]
+function getKey<T extends object, K extends keyof T>(obj: T, key: K) {
+    // 解析：1，T 继承与对象，且约束与对象
+    // 2.K 约束于这个对象的值（联合类型）
+    return obj[key]
+}
+getKey([], 'length')
 export default {}

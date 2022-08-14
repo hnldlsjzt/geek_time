@@ -58,6 +58,13 @@ function add7(...rest: any[]) {
 }
 console.log(add7(1, 2, 3, 4));
 console.log(add7('a', 'b', 'c', 'd'));
-
+let anyFun = (param = null) => param
+console.log('anyFun', anyFun(undefined))
 export default {}
+
+//  unknown:所有的类型都可以赋值给他，但它只能赋值给 unknonw 和 any
+// let result: unknown = 1
+// result = '1'
+// let a = 1
+// result = a
 
