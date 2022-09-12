@@ -1,7 +1,7 @@
 {
-    "files": ["src/a.ts","src/b.ts"],// 编译指定的文件,优先级比 exclude 高
+    // "files": ["src/a.ts","src/b.ts"],// 编译指定的文件,优先级比 exclude 高
     "include": ["src/lib/lib.ts"],
-    "exclude": ["src/*"],// 默认忽略 node_modules 文件夹
+    // "exclude": ["src/*"],// 默认忽略 node_modules 文件夹
     
   }
   
